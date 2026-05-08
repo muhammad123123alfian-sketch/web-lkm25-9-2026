@@ -131,12 +131,53 @@ export default function Home() {
               <p className="text-muted-foreground leading-relaxed mb-8">
                 {materi.desc}
               </p>
-              <Link href={`/materi/${materi.title.toLowerCase()}`} className="font-bold flex items-center gap-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+              <Link href={`/materi/${materi.title.toLowerCase().replace(" ", "-")}`} className="font-bold flex items-center gap-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                 Pelajari <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      {/* Mentor Section */}
+      <section className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row gap-16 items-center bg-foreground text-background rounded-[60px] p-12 md:p-24 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          
+          <div className="md:w-1/2 relative z-10">
+            <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">Dibimbing oleh <br /><span className="text-primary italic">Mentor Berpengalaman</span></h2>
+            <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
+              Kami tidak belajar sendiri. Tim LKM Informatika didampingi oleh mentor dari kakak tingkat 
+              dan praktisi yang siap membimbing dalam setiap langkah pengembangan diri.
+            </p>
+            <div className="flex items-center gap-6">
+              <div className="flex -space-x-4">
+                {[1, 2, 3].map((n) => (
+                  <div key={n} className="w-12 h-12 rounded-full border-2 border-foreground bg-secondary flex items-center justify-center overflow-hidden">
+                    <Users size={20} className="text-foreground/50" />
+                  </div>
+                ))}
+              </div>
+              <p className="font-bold">+5 Mentor Ahli</p>
+            </div>
+          </div>
+
+          <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+            {[
+              { name: "Kak Mentor 1", role: "Sr. Developer", field: "Leadership" },
+              { name: "Kak Mentor 2", role: "Project Manager", field: "Organization" }
+            ].map((mentor, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-[40px] hover:border-primary/50 transition-colors">
+                <div className="w-16 h-16 bg-primary rounded-2xl mb-6 flex items-center justify-center text-primary-foreground font-black text-xl">
+                  {mentor.name.split(" ")[2].charAt(0)}
+                </div>
+                <h4 className="font-bold text-xl mb-1">{mentor.name}</h4>
+                <p className="text-primary text-sm font-bold mb-4">{mentor.role}</p>
+                <span className="text-[10px] uppercase tracking-widest px-3 py-1 bg-white/10 rounded-full">{mentor.field}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Featured Anggota */}

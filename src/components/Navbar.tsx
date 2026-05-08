@@ -2,12 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Rocket, User, BookOpen, BarChart3 } from "lucide-react";
+import { Menu, X, Rocket, User, BookOpen, BarChart3, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/hooks/useAuth";
+import { auth } from "@/lib/firebase";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +22,13 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSignOut = async () => {
+    if (auth) {
+      await signOut(auth);
+      router.push("/login");
+    }
+  };
 
   const navLinks = [
     { name: "Home", href: "/", icon: <Rocket className="w-4 h-4" /> },
@@ -50,9 +63,28 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <button className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform">
-            Login
-          </button>
+          
+          {user ? (
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full border border-border">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-[10px] font-bold">
+                  {user.email?.charAt(0).toUpperCase()}
+                </div>
+                <span className="text-sm font-bold truncate max-w-[100px]">{user.displayName || user.email?.split("@")[0]}</span>
+              </div>
+              <button 
+                onClick={handleSignOut}
+                className="p-2 hover:bg-red-500/10 hover:text-red-500 rounded-full transition-colors"
+                title="Sign Out"
+              >
+                <LogOut className="w-5 h-5" />
+              </button>
+            </div>
+          ) : (
+            <Link href="/login" className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform">
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -84,9 +116,22 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <button className="bg-primary text-primary-foreground w-full py-4 rounded-xl font-bold mt-4">
-              Login
-            </button>
+            {user ? (
+              <button 
+                onClick={handleSignOut}
+                className="bg-red-500/10 text-red-500 w-full py-4 rounded-xl font-bold mt-4 flex items-center justify-center gap-2"
+              >
+                <LogOut className="w-5 h-5" /> Keluar
+              </button>
+            ) : (
+              <Link 
+                href="/login" 
+                className="bg-primary text-primary-foreground w-full py-4 rounded-xl font-bold mt-4 text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Login
+              </Link>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
