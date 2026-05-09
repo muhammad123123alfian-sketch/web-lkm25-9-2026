@@ -34,7 +34,6 @@ const Navbar = () => {
     { name: "Home", href: "/", icon: <Rocket className="w-4 h-4" /> },
     { name: "Materi", href: "/materi", icon: <BookOpen className="w-4 h-4" /> },
     { name: "Anggota", href: "/anggota", icon: <User className="w-4 h-4" /> },
-    { name: "Analytics", href: "/analytics", icon: <BarChart3 className="w-4 h-4" /> },
   ];
 
   return (

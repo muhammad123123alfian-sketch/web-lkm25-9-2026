@@ -3,7 +3,7 @@
 import React from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, BookOpen, Clock, Star, Users, Shield } from "lucide-react";
+import { ArrowLeft, BookOpen, Clock, Star, Users, Shield, Github, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 
 const materiContent: Record<string, any> = {
@@ -12,23 +12,17 @@ const materiContent: Record<string, any> = {
     description: "Seni memimpin diri sendiri sebelum memimpin orang lain.",
     icon: <Star className="w-12 h-12 text-primary" />,
     color: "bg-primary/10",
-    modules: [
-      { id: 1, title: "Self Leadership & Discipline", duration: "45 mins" },
-      { id: 2, title: "Etika & Integritas Pemimpin Informatika", duration: "60 mins" },
-      { id: 3, title: "Komunikasi Efektif dalam Tim", duration: "30 mins" },
-    ],
+    pemateri: { name: "Kak Ridwan", role: "Ketua Himpunan 2024", info: "Informatika '24" },
+    moderator: { name: "Kak Sarah", role: "Sekretaris Umum", info: "Informatika '24" },
     longContent: "Kepemimpinan bukan sekadar jabatan, melainkan pengaruh. Dalam konteks Informatika, seorang pemimpin harus mampu menjembatani antara visi teknis dan kebutuhan manusiawi tim."
   },
   organisasi: {
     title: "Manajemen Organisasi",
-    description: "Membangun sistem yang efisien dan kolaboratif.",
+    description: "Membangun sistem yang efisien and kolaboratif.",
     icon: <Users className="w-12 h-12 text-accent" />,
     color: "bg-accent/10",
-    modules: [
-      { id: 1, title: "Struktur & Budaya Organisasi", duration: "50 mins" },
-      { id: 2, title: "Manajemen Konflik & Solusi", duration: "40 mins" },
-      { id: 3, title: "Efisiensi Kerja Kelompok", duration: "60 mins" },
-    ],
+    pemateri: { name: "Kak Sarah", role: "Sekretaris Umum", info: "Informatika '24" },
+    moderator: { name: "Kak Budi", role: "Koor. Lapangan", info: "Informatika '25" },
     longContent: "Organisasi yang kuat lahir dari koordinasi yang rapi. Kita belajar bagaimana mengelola sumber daya dan dinamika tim agar mencapai tujuan bersama secara efektif."
   },
   "pra-aksi": {
@@ -36,12 +30,9 @@ const materiContent: Record<string, any> = {
     description: "Strategi eksekusi lapangan yang matang.",
     icon: <Shield className="w-12 h-12 text-emerald-500" />,
     color: "bg-emerald-500/10",
-    modules: [
-      { id: 1, title: "Analisis SWOT & Kondisi Lapangan", duration: "45 mins" },
-      { id: 2, title: "Manajemen Logistik & Operasional", duration: "55 mins" },
-      { id: 3, title: "Mitigasi Risiko & Problem Solving", duration: "35 mins" },
-    ],
-    longContent: "Aksi tanpa rencana adalah kegagalan. Di sini kita membedah cara menyusun strategi yang taktis untuk menghadapi berbagai skenario di lapangan."
+    pemateri: { name: "Kak Budi", role: "Koor. Lapangan", info: "Informatika '25" },
+    moderator: { name: "Kak Ridwan", role: "Ketua Himpunan 2024", info: "Informatika '24" },
+    longContent: "Aksi tanpa rencana adalah kegagalan. Di sini kita membedah cara menyusun strategi yang taktis untuk menghadapi berbagai scenerio di lapangan."
   }
 };
 
@@ -90,46 +81,66 @@ const MateriDetail = () => {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold mb-8">Modul Pembelajaran</h2>
-            {content.modules.map((module: any) => (
-              <div key={module.id} className="flex items-center justify-between p-6 bg-card border border-border rounded-2xl hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center font-bold text-sm">
-                    {module.id}
-                  </div>
-                  <h3 className="font-bold text-lg">{module.title}</h3>
-                </div>
-                <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                  <Clock className="w-4 h-4" /> {module.duration}
-                </div>
-              </div>
-            ))}
+            <h2 className="text-2xl font-bold mb-8">Detail Pembahasan</h2>
+            <div className="p-10 bg-card border border-border rounded-[40px] hover:border-primary/50 transition-colors">
+              <h3 className="text-xl font-bold mb-6">Materi Utama</h3>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                {content.longContent}
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Sidebar Info */}
         <div className="lg:col-span-1">
-          <div className="bg-secondary/30 border border-border rounded-[40px] p-8 sticky top-32">
-            <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <BookOpen className="text-primary w-6 h-6" /> Informasi Kursus
-            </h3>
-            <ul className="space-y-6">
-              <li className="flex justify-between items-center pb-4 border-bottom border-border">
-                <span className="text-muted-foreground">Tingkat</span>
-                <span className="font-bold">Pemula - Menengah</span>
-              </li>
-              <li className="flex justify-between items-center pb-4 border-bottom border-border">
-                <span className="text-muted-foreground">Total Waktu</span>
-                <span className="font-bold">~3 Jam</span>
-              </li>
-              <li className="flex justify-between items-center">
-                <span className="text-muted-foreground">Sertifikat</span>
-                <span className="font-bold">Tersedia</span>
-              </li>
-            </ul>
-            <button className="w-full bg-primary text-primary-foreground py-4 rounded-2xl font-bold mt-10 hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20">
-              Mulai Belajar Sekarang
-            </button>
+          <div className="space-y-8 sticky top-32">
+            {/* Pemateri Card */}
+            <div className="bg-card border border-border rounded-[40px] p-8 group">
+              <span className="text-muted-foreground text-xs uppercase tracking-[0.2em] font-bold mb-6 block text-center">Pemateri</span>
+              <div className="relative w-full aspect-square bg-muted rounded-[30px] overflow-hidden mb-6">
+                <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-4">
+                  <div className="flex gap-3">
+                    <button aria-label="GitHub Profile" className="p-3 bg-background rounded-full hover:scale-110 transition-transform shadow-lg"><Github size={20} /></button>
+                    <button aria-label="Instagram Profile" className="p-3 bg-background rounded-full hover:scale-110 transition-transform shadow-lg"><Instagram size={20} /></button>
+                    <button aria-label="LinkedIn Profile" className="p-3 bg-background rounded-full hover:scale-110 transition-transform shadow-lg"><Linkedin size={20} /></button>
+                  </div>
+                </div>
+                <div className="w-full h-full flex items-center justify-center">
+                  <Users size={60} className="text-muted-foreground opacity-20" />
+                </div>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold mb-2">{content.pemateri.name}</h3>
+                <div className="inline-block px-4 py-1 bg-primary/20 text-primary-foreground rounded-full text-xs font-bold mb-3 border border-primary/20">
+                  {content.pemateri.role}
+                </div>
+                <p className="text-muted-foreground font-medium tracking-widest text-[10px] uppercase">{content.pemateri.info}</p>
+              </div>
+            </div>
+
+            {/* Moderator Card */}
+            <div className="bg-card border border-border rounded-[40px] p-8 group">
+              <span className="text-muted-foreground text-xs uppercase tracking-[0.2em] font-bold mb-6 block text-center">Moderator</span>
+              <div className="relative w-full aspect-square bg-muted rounded-[30px] overflow-hidden mb-6">
+                <div className="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-4">
+                  <div className="flex gap-3">
+                    <button aria-label="GitHub Profile" className="p-2 bg-background rounded-full hover:scale-110 transition-transform shadow-lg"><Github size={16} /></button>
+                    <button aria-label="Instagram Profile" className="p-2 bg-background rounded-full hover:scale-110 transition-transform shadow-lg"><Instagram size={16} /></button>
+                    <button aria-label="LinkedIn Profile" className="p-2 bg-background rounded-full hover:scale-110 transition-transform shadow-lg"><Linkedin size={16} /></button>
+                  </div>
+                </div>
+                <div className="w-full h-full flex items-center justify-center">
+                  <Users size={60} className="text-muted-foreground opacity-20" />
+                </div>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold mb-2">{content.moderator.name}</h3>
+                <div className="inline-block px-4 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-bold mb-3 border border-border">
+                  {content.moderator.role}
+                </div>
+                <p className="text-muted-foreground font-medium tracking-widest text-[10px] uppercase">{content.moderator.info}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
