@@ -26,13 +26,39 @@ const materiContent: Record<string, any> = {
     longContent: "Organisasi yang kuat lahir dari koordinasi yang rapi. Kita belajar bagaimana mengelola sumber daya dan dinamika tim agar mencapai tujuan bersama secara efektif."
   },
   "pra-aksi": {
-    title: "Persiapan Pra-Aksi",
-    description: "Strategi eksekusi lapangan yang matang.",
+    title: "Manajemen Aksi",
+    description: "Pemahaman dan persiapan aksi nyata di lapangan.",
     icon: <Shield className="w-12 h-12 text-emerald-500" />,
     color: "bg-emerald-500/10",
-    pemateri: { name: "Kak Budi", role: "Koor. Lapangan", info: "Informatika '25" },
+    pemateri: { name: "Kak Defri Crisna Pramudi"},
     moderator: { name: "Kak Ridwan", role: "Ketua Himpunan 2024", info: "Informatika '24" },
-    longContent: "Aksi tanpa rencana adalah kegagalan. Di sini kita membedah cara menyusun strategi yang taktis untuk menghadapi berbagai scenerio di lapangan."
+    longContent: (
+      <>
+        Aksi adalah pernyataan sikap, pendapat, opini, atau tuntutan yang dilakukan dengan jumlah massa tertentu dan teknik tertentu agar mendapat perhatian dari pihak yang dituju tanpa menggunakan mekanisme konvensional / birokrasi. Demonstrasi juga bertujuan untuk menekan pembuat keputusan untuk melakukan sesuatu. Aksi dilatarbelakangi oleh matinya jalur penyampaian aspirasi dan buntunya metode dialog.<br /><br />
+      
+        Landasan hukum terkait aksi tertuang dalam UU No. 9/1998 tentang mekanisme penyampaian pendapat di muka umum.<br /><br />
+        
+        Saat mengikuti aksi dilarang membawa benda yang membahayakan keselamatan umum. Sebelum melakukan aksi kita juga harus menyampaikan laporan/pemberitahuan tertulis kepada pihak kepolisian setempat. Laporan/surat tersebut memuat tujuan & maksud aksi, waktu acara, rute, jumlah massa, dan lain-lain. Mekanisme keputusan aksi menggunakan analisis SWOT, sedangkan mekanisme aksi sendiri meliputi: Diskusi awal, diskusi pembentukan tim, diskusi lanjutan, dan aksi lapangan.<br /><br />
+        
+        <strong>Perangkat aksi terdiri dari:</strong><br />
+        1. Koordinator lapangan<br />
+        2. Orator<br />
+        3. Negosiator<br />
+        4. Agitator<br />
+        5. Logistik<br />
+        6. Kreatif<br />
+        7. Humas & Medis<br />
+        8. Border tim (panitia harus tahu siapa saja yang dibawa ketika aksi)<br />
+        9. Dokumentasi<br /><br />
+
+        <strong>Hal yang perlu diperhatikan dalam merancang aksi:</strong><br />
+        1. Tema / Grand Issue yang up to date.<br />
+        2. Susun target (pencapaian jumlah massa, isu tuntutan aksi, target siapa yang hendak dituju).<br />
+        3. Skenario (rute, tokoh orator, happening art & acara lainnya). Skenario yang disiapkan harus lebih dari satu.<br />
+        4. Pemberitahuan (tergantung kebutuhan).<br />
+        5. Bentuk aksi (Formal kekerasan/nirkekerasan, aksi diam/bisu, orasi, happening art).
+      </>
+      )
   }
 };
 
