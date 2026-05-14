@@ -25,17 +25,17 @@ const materiContent: Record<string, any> = {
     moderator: { name: "Kak Budi", role: "Koor. Lapangan", info: "Informatika '25" },
     longContent: "Organisasi yang kuat lahir dari koordinasi yang rapi. Kita belajar bagaimana mengelola sumber daya dan dinamika tim agar mencapai tujuan bersama secara efektif."
   },
-  "pra-aksi": {
+  "manajemen-aksi": { 
     title: "Manajemen Aksi",
     description: "Pemahaman dan persiapan aksi nyata di lapangan.",
     icon: <Shield className="w-12 h-12 text-emerald-500" />,
     color: "bg-emerald-500/10",
-    pemateri: { name: "Kak Defri Crisna Pramudi"},
+    pemateri: { name: "Kak Defri Crisna Pramudi", role: "Pemateri", info: "Informatika" }, 
     moderator: { name: "Kak Ridwan", role: "Ketua Himpunan 2024", info: "Informatika '24" },
     longContent: (
       <>
         Aksi adalah pernyataan sikap, pendapat, opini, atau tuntutan yang dilakukan dengan jumlah massa tertentu dan teknik tertentu agar mendapat perhatian dari pihak yang dituju tanpa menggunakan mekanisme konvensional / birokrasi. Demonstrasi juga bertujuan untuk menekan pembuat keputusan untuk melakukan sesuatu. Aksi dilatarbelakangi oleh matinya jalur penyampaian aspirasi dan buntunya metode dialog.<br /><br />
-      
+        
         Landasan hukum terkait aksi tertuang dalam UU No. 9/1998 tentang mekanisme penyampaian pendapat di muka umum.<br /><br />
         
         Saat mengikuti aksi dilarang membawa benda yang membahayakan keselamatan umum. Sebelum melakukan aksi kita juga harus menyampaikan laporan/pemberitahuan tertulis kepada pihak kepolisian setempat. Laporan/surat tersebut memuat tujuan & maksud aksi, waktu acara, rute, jumlah massa, dan lain-lain. Mekanisme keputusan aksi menggunakan analisis SWOT, sedangkan mekanisme aksi sendiri meliputi: Diskusi awal, diskusi pembentukan tim, diskusi lanjutan, dan aksi lapangan.<br /><br />
@@ -58,7 +58,7 @@ const materiContent: Record<string, any> = {
         4. Pemberitahuan (tergantung kebutuhan).<br />
         5. Bentuk aksi (Formal kekerasan/nirkekerasan, aksi diam/bisu, orasi, happening art).
       </>
-      )
+    )
   }
 };
 
@@ -83,7 +83,6 @@ const MateriDetail = () => {
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-        {/* Left Content */}
         <div className="lg:col-span-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -101,26 +100,24 @@ const MateriDetail = () => {
 
           <div className="prose prose-lg dark:prose-invert max-w-none mb-16">
             <h2 className="text-2xl font-bold mb-6">Ringkasan Materi</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <div className="text-muted-foreground text-lg leading-relaxed">
               {content.longContent}
-            </p>
+            </div>
           </div>
 
           <div className="space-y-6">
             <h2 className="text-2xl font-bold mb-8">Detail Pembahasan</h2>
             <div className="p-10 bg-card border border-border rounded-[40px] hover:border-primary/50 transition-colors">
               <h3 className="text-xl font-bold mb-6">Materi Utama</h3>
-              <p className="text-muted-foreground leading-relaxed text-lg">
+              <div className="text-muted-foreground leading-relaxed text-lg">
                 {content.longContent}
-              </p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Sidebar Info */}
         <div className="lg:col-span-1">
           <div className="space-y-8 sticky top-32">
-            {/* Pemateri Card */}
             <div className="bg-card border border-border rounded-[40px] p-8 group">
               <span className="text-muted-foreground text-xs uppercase tracking-[0.2em] font-bold mb-6 block text-center">Pemateri</span>
               <div className="relative w-full aspect-square bg-muted rounded-[30px] overflow-hidden mb-6">
@@ -144,7 +141,6 @@ const MateriDetail = () => {
               </div>
             </div>
 
-            {/* Moderator Card */}
             <div className="bg-card border border-border rounded-[40px] p-8 group">
               <span className="text-muted-foreground text-xs uppercase tracking-[0.2em] font-bold mb-6 block text-center">Moderator</span>
               <div className="relative w-full aspect-square bg-muted rounded-[30px] overflow-hidden mb-6">
