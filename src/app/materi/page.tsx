@@ -23,12 +23,12 @@ const materials = [
     topics: ["Struktur Organisasi", "Dinamika Kelompok", "Manajemen Konflik"]
   },
   {
-    title: "Pra-Aksi",
-    desc: "Persiapan teknis dan mental untuk implementasi aksi nyata di lapangan. Perencanaan strategis dan eksekusi.",
+    title: "Manajemen Aksi",
+    desc: "Pemahaman dan persiapan aksi nyata di lapangan. Membahas mekanisme, perangkat, dan strategi merancang aksi.",
     icon: <Shield className="w-10 h-10 text-emerald-500" />,
     color: "bg-emerald-500/10",
-    slug: "pra-aksi",
-    topics: ["Analisis Kondisi", "Perencanaan Strategis", "Manajemen Aksi"]
+    slug: "manajemen-aksi",
+    topics: ["Mekanisme Aksi", "Perangkat Aksi", "Grand Issue"]
   }
 ];
 
