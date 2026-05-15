@@ -2,35 +2,76 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Star, Shield, Users, ArrowRight } from "lucide-react";
+import { Star, Shield, Users, ArrowRight, Search, MessageSquare, Database, Heart } from "lucide-react";
 import Link from "next/link";
 
+// 1. Data diperbaiki dengan menambahkan slug dan topics agar tidak error saat render
 const materials = [
   {
     title: "Kepemimpinan",
+    slug: "kepemimpinan",
     desc: "Mempelajari esensi kepemimpinan dalam konteks mahasiswa Informatika. Meliputi self-leadership, integritas, dan visi.",
     icon: <Star className="w-10 h-10 text-primary" />,
     color: "bg-primary/10",
-    slug: "kepemimpinan",
-    topics: ["Self Leadership", "Etika & Integritas", "Visi & Misi"]
+    topics: ["Self-Leadership", "Integritas", "Visi"],
   },
   {
     title: "Organisasi",
+    slug: "organisasi",
     desc: "Memahami struktur organisasi, dinamika kelompok, dan manajemen konflik untuk mencapai tujuan bersama.",
     icon: <Users className="w-10 h-10 text-accent" />,
     color: "bg-accent/10",
-    slug: "organisasi",
-    topics: ["Struktur Organisasi", "Dinamika Kelompok", "Manajemen Konflik"]
+    topics: ["Struktur", "Dinamika", "Konflik"],
   },
   {
     title: "Manajemen Aksi",
+    slug: "manajemen-aksi",
     desc: "Pemahaman dan persiapan aksi nyata di lapangan. Membahas mekanisme, perangkat, dan strategi merancang aksi.",
     icon: <Shield className="w-10 h-10 text-emerald-500" />,
     color: "bg-emerald-500/10",
-    slug: "manajemen-aksi",
-    topics: ["Mekanisme Aksi", "Perangkat Aksi", "Grand Issue"]
-  }
-];
+    topics: ["Mekanisme", "Strategi", "Aksi"],
+  },
+  {
+    title: "Analisis",
+    slug: "analisis",
+    desc: "Mengasah kemampuan berpikir kritis untuk membedah masalah secara sistematis dan solutif.",
+    icon: <Search className="w-10 h-10 text-blue-500" />,
+    color: "bg-blue-500/10",
+    topics: ["Kritis", "Sistematis", "Solutif"],
+  },
+  { // Perbaikan: Sebelumnya menggunakan ( )
+    title: "Otoritas Informasi",
+    slug: "otoritas-informasi",
+    desc: "Pemanfaatan data dan informasi sebagai basis kekuatan dalam berargumen dan mengambil keputusan.",
+    icon: <Database className="w-10 h-10 text-orange-500" />,
+    color: "bg-orange-500/10",
+    topics: ["Data", "Validasi", "Opini"],
+  },
+  {
+    title: "Retorika", // Perbaikan: Dari "Retorasi"
+    slug: "retorika",
+    desc: "Seni berbicara di depan publik dengan meyakinkan, lugas, dan mampu menggerakkan massa.",
+    icon: <MessageSquare className="w-10 h-10 text-purple-500" />,
+    color: "bg-purple-500/10",
+    topics: ["Public Speaking", "Persuasi", "Debat"],
+  },
+  {
+    title: "Informatika",
+    slug: "informatika",
+    desc: "Menyelami peran mahasiswa IT sebagai agen perubahan di era digital dan teknologi.",
+    icon: <Shield className="w-10 h-10 text-cyan-500" />,
+    color: "bg-cyan-500/10",
+    topics: ["Digital", "Etika IT", "Inovasi"],
+  },
+  {
+    title: "Kekeluargaan",
+    slug: "kekeluargaan",
+    desc: "Membangun ikatan emosional dan solidaritas antar anggota Informatika untuk lingkungan yang suportif.",
+    icon: <Heart className="w-10 h-10 text-pink-500" />,
+    color: "bg-pink-500/10",
+    topics: ["Solidaritas", "Empati", "Kebersamaan"],
+  },
+]; // Perbaikan: Pastikan array ditutup
 
 const MateriPage = () => {
   return (
@@ -50,7 +91,7 @@ const MateriPage = () => {
       <div className="grid grid-cols-1 gap-12">
         {materials.map((materi, index) => (
           <motion.div 
-            key={materi.slug}
+            key={materi.slug} // Sekarang sudah aman karena ada properti slug
             initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -64,6 +105,8 @@ const MateriPage = () => {
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                 {materi.desc}
               </p>
+              
+              {/* Render topics secara dinamis */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {materi.topics.map(topic => (
                   <span key={topic} className="px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">
@@ -71,6 +114,7 @@ const MateriPage = () => {
                   </span>
                 ))}
               </div>
+
               <Link 
                 href={`/materi/${materi.slug}`}
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-2xl font-bold hover:scale-105 transition-transform"
